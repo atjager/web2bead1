@@ -1,6 +1,6 @@
 <?php
   function call($controller, $action) {
-    require_once('controllers/' . $controller . '_controller.php');
+    require_once('controllers/' . $controller . 'Controller.php');
 
     switch($controller) {
       case 'pages':
@@ -14,15 +14,20 @@
       case 'example':
         $controller= new ExampleController();
         break;
+      case 'user':
+        require_once('models/user.php');
+        $controller= new UserController();
+        break;
     }
 
     $controller->{ $action }();
   }
 
   // we're adding an entry for the new controller and its actions
-  $controllers = array('pages' => ['home', 'error','otherPage'],
+  $controllers = array('pages' => ['home', 'error','otherPage','login'],
                        'posts' => ['index', 'show'],
-                       'example' => ['home']);
+                       'example' => ['home'],
+                       'user'=>['login','logout']);
 
   if (array_key_exists($controller, $controllers)) {
     if (in_array($action, $controllers[$controller])) {

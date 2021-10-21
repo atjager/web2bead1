@@ -12,6 +12,10 @@
 
     public function otherPage(){
       require_once('views/pages/otherPage.php');
+
+    }
+    public function login(){
+      require_once('views/pages/login.php');
     }
   }
 ?>
