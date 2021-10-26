@@ -11,7 +11,7 @@
       <?php 
       session_start();
       if(isset($_SESSION['user'])){
-        echo'<a href="?controller=user&action=logout">Logout</a>';
+        echo'<a href="?controller=user&action=logout">Logout</a> Logged in as '.$_SESSION['user'];
       }else{
         echo '<a href="?controller=pages&action=login">Login</a>';
       }

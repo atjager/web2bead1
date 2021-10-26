@@ -35,8 +35,19 @@
       // the query was prepared, now we replace :id with our actual $id value
       $req->execute(array('username' => $username));
       $user = $req->fetch();
+      if(isset($user['id']))
+        return new User($user['id'], $user['username'], $user['password'], $user['role'] );
+      else
+        return null;
 
-      return new User($user['id'], $user['username'], $user['password'], $user['role'] );
+      }
+
+      public static function insertUser($username, $password, $role){
+        $db = Db::getInstance();
+        $req = $db->prepare("INSERT INTO users (username, password, role) VALUES ('$username','$password','$role')");
+        $req->execute(array('username' => $username));
+      }
+      
     }
-  }
+  
 ?>

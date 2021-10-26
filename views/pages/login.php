@@ -5,4 +5,4 @@
 <label for="pwd">Password</label>
 <input type="password" id="password" name="password"><br><br>
 <input name="submit" type="submit" id="submit" value="Login"><br>
-<p>New User <a href="signup.php">Register Here</a></p>
+<p>New User <a href="?controller=pages&action=register">Register Here</a></p>
