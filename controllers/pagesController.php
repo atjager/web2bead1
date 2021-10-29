@@ -1,8 +1,7 @@
 <?php
   class PagesController {
     public function home() {
-      $first_name = 'Jon';
-      $last_name  = 'Snow';
+     
       require_once('views/pages/home.php');
     }
 
@@ -20,6 +19,10 @@
 
     public function register(){
       require_once('views/pages/register.php');
+    }
+
+    public function authDone(){
+      require_once('views/pages/authDone.php');
     }
   }
 ?>

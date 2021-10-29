@@ -1,8 +1,25 @@
-<div class="floating-box">
+
+<div style="width: 350px; margin:auto">
 <form name="form1" method="post" action="?controller=user&action=login">
-<label for="uname">User Name</label>
-<input type="text" id="username" name="username"><br><br>
-<label for="pwd">Password</label>
-<input type="password" id="password" name="password"><br><br>
-<input name="submit" type="submit" id="submit" value="Login"><br>
+<div class="field">
+  <label class="label">Username</label>
+  <div class="control">
+    <input name=username class="input" required type="text" placeholder="Text input">
+  </div>
+</div>
+
+<div class="field">
+  <label class="label">Password</label>
+  <div class="control">
+    <input name="password" type="password" required class="input" type="text" placeholder="Text input">
+  </div>
+</div>
+
+<div class="field is-grouped">
+  <div class="control">
+    <button name="submit" class="button is-link">Submit</button>
+  </div>
+
+</div>
+</div>
 <p>New User <a href="?controller=pages&action=register">Register Here</a></p>

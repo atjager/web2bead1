@@ -9,20 +9,26 @@ class UserController{
         
         if(isset($_POST['username'])&&isset($_POST['password'])){
             $user=User::find($_POST['username']);
-            if($user!=null)
-            if($_POST['username']==$user->username&&$_POST['password']==$user->password){
-                echo 'Successfuly logged in';
-                
-                $_SESSION['user']=$user->username;
-                echo $user->username; 
+            if($user!=null){
+                if($_POST['username']==$user->username&&sha1($_POST['password'])==$user->password){
+                    echo 'Successfuly logged in';
+                    
+                    $_SESSION['user']=$user->username;
+                    $_SESSION['first_name']=$user->first_name;
+                    $_SESSION['last_name']=$user->last_name;
+                    //echo $user->username; 
+                    header('Location: ?controller=pages&action=authDone');
+                }
+                else{
+                    echo 'Incorrect username or password';
+                }
             }
-            echo 'valami';
-            
             
         }
     }
     public function logout(){
         session_destroy();
+        header('Location: ?');
     }
 
     public function register(){
@@ -32,7 +38,7 @@ class UserController{
             }
             $registerUser=User::find($_POST['username']);
             if($registerUser==null){
-                $registerUser=User::insertUser($_POST['username'],$_POST['password'],2);
+                $registerUser=User::insertUser($_POST['username'],$_POST['password'],2,$_POST['first_name'],$_POST['last_name']);
 
             }
         }

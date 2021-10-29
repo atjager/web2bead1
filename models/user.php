@@ -7,10 +7,12 @@
     public $password;
     public $role;
 
-    public function __construct($id, $username, $password, $role) {
+    public function __construct($id, $username, $password, $role, $first_name, $last_name) {
       $this->id      = $id;
       $this->username  = $username;
       $this->password = $password;
+      $this->first_name = $first_name;
+      $this->last_name=$last_name;
       $this->role = $role;
     }
 
@@ -21,7 +23,7 @@
 
       // we create a list of User objects from the database results
       foreach($req->fetchAll() as $user) {
-        $list[] = new User($user['id'], $user['username'], $user['password'], $user['role'] );
+        $list[] = new User($user['id'], $user['username'], $user['password'], $user['role'], $user['first_name'], $user['last_name']);
       }
 
       return $list;
@@ -36,16 +38,17 @@
       $req->execute(array('username' => $username));
       $user = $req->fetch();
       if(isset($user['id']))
-        return new User($user['id'], $user['username'], $user['password'], $user['role'] );
+        return new User($user['id'], $user['username'], $user['password'], $user['role'], $user['first_name'], $user['last_name'] );
       else
         return null;
 
       }
 
-      public static function insertUser($username, $password, $role){
+      public static function insertUser($username, $password, $role, $first_name, $last_name){
         $db = Db::getInstance();
-        $req = $db->prepare("INSERT INTO users (username, password, role) VALUES ('$username','$password','$role')");
-        $req->execute(array('username' => $username));
+        $password=sha1($password);
+        $req = $db->query("INSERT INTO users (username, password, role, first_name, last_name) VALUES ('$username','$password','$role','$first_name','$last_name')");
+        
       }
       
     }
