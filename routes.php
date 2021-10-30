@@ -11,8 +11,8 @@
         require_once('models/post.php');
         $controller = new PostsController();
       break;
-      case 'example':
-        $controller= new ExampleController();
+      case 'news':
+        $controller= new NewsController();
         break;
       case 'user':
         require_once('models/user.php');
@@ -26,7 +26,7 @@
   // we're adding an entry for the new controller and its actions
   $controllers = array('pages' => ['home', 'error','otherPage','login', 'register', 'authDone'],
                        'posts' => ['index', 'show'],
-                       'example' => ['home'],
+                       'news' => ['home'],
                        'user'=>['login','logout','register']);
 
   if (array_key_exists($controller, $controllers)) {

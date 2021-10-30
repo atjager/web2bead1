@@ -1,0 +1,10 @@
+1.	Az első oldalon mutassa be a céget egy reszponzív weboldalon
+6.	Egy oldalon készítsen egy SOAP web-szolgáltatás megvalósítást az adatbázist felhasználva. 
+Az adatbázis minden tábláját használja fel a feladathoz.
+7.	Egy oldalon használja fel a Magyar Nemzeti Bank SOAP adatszolgáltatását, és valósítson meg több lekérdezési lehetőséget is az adatokból. 
+8.	Alkalmazását töltse fel és valósítsa meg Internetes tárhelyen is. Bármelyik tárhely-szolgáltatót használhatja.
+10.	Készítsen egy kb. 10 oldalas dokumentációt képernyőképekkel, amiben bemutatja alkalmazását és leírja, hogy az előző pontok feladatait hogyan valósította meg. 
+
+
+
+url nav-->/controller/function/param

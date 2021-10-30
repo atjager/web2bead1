@@ -10,8 +10,8 @@
         Home
       </a>
 
-      <a href='?controller=example&action=home' class="navbar-item">
-        Example
+      <a href='?controller=news&action=home' class="navbar-item">
+        News
       </a>
 
       <a href='?controller=posts&action=index' class="navbar-item">
