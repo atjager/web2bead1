@@ -8,3 +8,7 @@ Az adatbázis minden tábláját használja fel a feladathoz.
 
 
 url nav-->/controller/function/param
+
+TODO:
+Bálint: SOAP, Doksi, Home page
+Atti: nethely, news
