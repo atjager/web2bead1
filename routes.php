@@ -18,6 +18,9 @@
         require_once('models/user.php');
         $controller= new UserController();
         break;
+      case 'webservice':
+        $controller= new WebserviceController();
+        break;
     }
 
     $controller->{ $action }();
@@ -27,7 +30,10 @@
   $controllers = array('pages' => ['home', 'error','otherPage','login', 'register', 'authDone'],
                        'posts' => ['index', 'show'],
                        'news' => ['home'],
-                       'user'=>['login','logout','register']);
+                       'user'=>['login','logout','register'],
+                       'webservice' => ['show']
+                      
+                      );
 
   if (array_key_exists($controller, $controllers)) {
     if (in_array($action, $controllers[$controller])) {

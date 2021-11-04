@@ -22,6 +22,10 @@
         OtherPage
       </a>
 
+      <a href='?controller=webservice&action=show' class="navbar-item">
+        Webservice
+      </a>
+
       
       
       <?php 
