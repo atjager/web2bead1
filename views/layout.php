@@ -26,6 +26,11 @@
         Webservice
       </a>
 
+      <a href='?controller=exchangerate&action=show' class="navbar-item">
+        Exchange Rate
+      </a>
+
+
       
       
       <?php 

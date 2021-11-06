@@ -21,6 +21,9 @@
       case 'webservice':
         $controller= new WebserviceController();
         break;
+      case 'exchangerate':
+        $controller= new exchangerateController();
+        break;
     }
 
     $controller->{ $action }();
@@ -31,8 +34,8 @@
                        'posts' => ['index', 'show'],
                        'news' => ['home'],
                        'user'=>['login','logout','register'],
-                       'webservice' => ['show']
-                      
+                       'webservice' => ['show'],
+                       'exchangerate' => ['show']
                       );
 
   if (array_key_exists($controller, $controllers)) {
