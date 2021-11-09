@@ -2,8 +2,9 @@
 <html>
   <head>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
-  <script> src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.js"</script>
-  </head>
+  <script src="https://code.highcharts.com/highcharts.js"></script>  
+  <script src="https://code.highcharts.com/highcharts.js"></script>  
+</head>
   <body>
     <header>
     <div class="navbar-start">
@@ -13,11 +14,6 @@
 
       <a href='?controller=news&action=home' class="navbar-item">
         News
-      </a>
-
-
-      <a href='?controller=pages&action=otherPage' class="navbar-item">
-        OtherPage
       </a>
 
       <a href='?controller=webservice&action=show' class="navbar-item">

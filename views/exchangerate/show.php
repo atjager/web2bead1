@@ -44,7 +44,7 @@
         <input type='checkbox' id='month' name='month'>
         <br>
         <br>
-        <input class='button' type="submit" value="Submit"  id="exchangesubmit">
+        <input class='button' type="submit" value="Submit" id="exchangesubmit">
     </form>
 
 </div>
@@ -70,9 +70,14 @@
                     <th>Value</th>
                 </tr>
                 <?php
+                $dates=array();
+                $values=array();
                     foreach($datas as $data){
                         foreach($data as $key =>$value)
                             echo "<tr><td>".$_POST['firstcurr']." - ".$_POST['secondcurr']."</td><td>".$key."<td/><td>".$value."</td></tr>";
+                        array_push($dates, $key);
+                        array_push($values, $value);
+
                         
                     }
                 ?>
@@ -92,7 +97,7 @@
             else{
             echo "<div class='box'>
                     <p>
-                        In ".$_POST['date']." <strong>1</strong> ".$_POST['firstcurr']." was ".number_format($data, 9, '.')." ".$_POST['secondcurr']."
+                        In ".$_POST['date']." <strong>1</strong> ".$_POST['firstcurr']." was ".round($data,9)." ".$_POST['secondcurr']."
                     </p>
                 </div>";
             }
@@ -100,47 +105,133 @@
     }else{
         echo "<strong class='box'>Please give correct input!</strong>";
     }
-?>
-<canvas id="myChart" width="400" height="400"></canvas>
 
-<script> 
-
-const ctx = document.getElementById('myChart');
-const myChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-        datasets: [{
-            label: '# of Votes',
-            data: [<?php implode(",",$datas['']) ?>],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        scales: {
-            y: {
-                beginAtZero: true
-            }
-        }
+    if(isset($_POST['month'])){
+        echo '<!--innent   ^ql a chart div-->
+        <div id="chartDiv" class="content" style="padding:0">
+        
+        <div class="loaddata loadcontent">
+                <!--CHART HELYE-->
+                <br>
+                <?php
+                
+                ?>
+        
+               
+                <div id="container_all" class=""></div>
+        </div>
+        
+        
+        </div>';
     }
-});
- 
+?>
 
-//scr="js/chart.js";
+
+
+
+
+
+
+<script type="text/javascript">
+        $(document).ready(function() {
+
+                $('.ldng').fadeOut(500);
+
+        });
+</script>
+
+
+<script type="text/javascript">
+        Highcharts.chart('container_all', {
+
+                //colors: ['#6AC8C8','#43CBAF', '#3DC7D1', '#4897C6','#4897C6','#5A9DB4'],
+
+
+                theme: Highcharts.theme,
+                chart: {
+                        zoomType: 'x',
+                        type: 'column',
+                        backgroundColor: {
+                                linearGradient: [0, 100, 400, 400],
+                                stops: [
+                                        [0, 'rgb(20, 20, 20)'],
+                                        [1, 'rgb(40, 40, 40)']
+                                ]
+                        }
+                },
+                title: {
+                        style: {
+                                color: 'white'
+
+                        },
+                        text: 'Exchange rate'
+                },
+                xAxis: {
+                        style: {
+                                fontWeight: 'bold',
+                                fontSize: '10px'
+                        },
+                        categories: [<?php  echo '"'.implode('","',$dates).'"'?>]
+
+                },
+                yAxis: {
+                        min: 0,
+                        title: {
+                                text: '',
+                                color: '#fff'
+                        },
+                        stackLabels: {
+                                enabled: true,
+                                style: {
+                                        fontWeight: 'bold',
+                                        color: ( //theme
+                                                Highcharts.defaultOptions.title.style &&
+                                                Highcharts.defaultOptions.title.style.color
+                                        ) || 'gray',
+                                        color: '#FFFFFF',
+                                        textOutline: 'none'
+                                }
+                        }
+                },
+                legend: {
+                        align: 'right',
+x: -30,
+                        verticalAlign: 'top',
+                        y: 25,
+                        floating: true,
+                        backgroundColor: Highcharts.defaultOptions.legend.backgroundColor || 'white',
+                        borderColor: '#CCC',
+                        borderWidth: 1,
+                        shadow: false
+                },
+                tooltip: {
+                        headerFormat: '<b>{point.x}</b><br/>',
+                        pointFormat: '{series.name}: {point.y}<br/>Total: {point.stackTotal}'
+                },
+                plotOptions: {
+                        column: {
+                                stacking: 'normal',
+                                dataLabels: {
+                                        enabled: true,
+                                        shape: 'callout',
+                                        style: {
+                                                color: '#FFFFFF',
+                                                textOutline: 'none'
+                                        }
+                                }
+                        }
+                },
+                series: [{
+                                name: 'Values',
+                                color: 'blue',
+                                borderColor: 'black',
+                                borderWidth: 0,
+                                shadow: false,
+                                data: [<?php echo implode(',',$values)?>],
+                                stack: '',
+                                type: 'spline'
+                        }
+
+                ]
+        });
 </script>

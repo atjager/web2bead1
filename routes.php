@@ -33,7 +33,7 @@
   }
 
   // we're adding an entry for the new controller and its actions
-  $controllers = array('pages' => ['home', 'error','otherPage','login', 'register', 'authDone'],
+  $controllers = array('pages' => ['home', 'error','login', 'register', 'authDone'],
 
                        'posts' => ['index', 'show'],
                        'news' => ['home'],
