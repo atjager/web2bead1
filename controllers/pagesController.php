@@ -24,5 +24,6 @@
     public function authDone(){
       require_once('views/pages/authDone.php');
     }
+
   }
 ?>

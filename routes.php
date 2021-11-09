@@ -21,6 +21,12 @@
         require_once('models/user.php');
         $controller= new UserController();
         break;
+      case 'webservice':
+        $controller= new WebserviceController();
+        break;
+      case 'exchangerate':
+        $controller= new exchangerateController();
+        break;
     }
 
     $controller->{ $action }();
@@ -28,9 +34,14 @@
 
   // we're adding an entry for the new controller and its actions
   $controllers = array('pages' => ['home', 'error','otherPage','login', 'register', 'authDone'],
-                       'posts' => ['index', 'show',],
-                       'news' => ['home', 'createNews','createComment'],
-                       'user'=>['login','logout','register']);
+
+                       'posts' => ['index', 'show'],
+                       'news' => ['home'],
+                       'user'=>['login','logout','register'],
+                       'webservice' => ['show'],
+                       'exchangerate' => ['show']
+                      );
+
 
   if (array_key_exists($controller, $controllers)) {
     if (in_array($action, $controllers[$controller])) {

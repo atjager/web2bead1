@@ -2,6 +2,7 @@
 <html>
   <head>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+  <script> src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.js"</script>
   </head>
   <body>
     <header>
@@ -18,6 +19,15 @@
       <a href='?controller=pages&action=otherPage' class="navbar-item">
         OtherPage
       </a>
+
+      <a href='?controller=webservice&action=show' class="navbar-item">
+        Webservice
+      </a>
+
+      <a href='?controller=exchangerate&action=show' class="navbar-item">
+        Exchange Rate
+      </a>
+
 
       
       
