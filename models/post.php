@@ -5,11 +5,15 @@
     public $id;
     public $author;
     public $content;
+    public $title;
+    public $date;
 
-    public function __construct($id, $author, $content) {
+    public function __construct($id, $author, $content, $title, $date) {
       $this->id      = $id;
       $this->author  = $author;
       $this->content = $content;
+      $this->title   = $title;
+      $this ->date   = $date;
     }
 
     public static function all() {
@@ -19,7 +23,7 @@
 
       // we create a list of Post objects from the database results
       foreach($req->fetchAll() as $post) {
-        $list[] = new Post($post['id'], $post['author'], $post['content']);
+        $list[] = new Post($post['id'], $post['author'], $post['content'], $post['title'], $post['date']);
       }
 
       return $list;
@@ -34,7 +38,16 @@
       $req->execute(array('id' => $id));
       $post = $req->fetch();
 
-      return new Post($post['id'], $post['author'], $post['content']);
+      return  new Post($post['id'], $post['author'], $post['content'], $post['title'], $post['date']);
     }
+
+    public static function insertNews($author, $title, $content){
+      $db = Db::getInstance();
+      
+      $req = $db->query("INSERT INTO posts (author, title, content) VALUES ('$author','$title','$content')");
+      
+    }
+
+    
   }
 ?>

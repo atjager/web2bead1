@@ -13,7 +13,10 @@
       break;
       case 'news':
         $controller= new NewsController();
+        require_once('models/post.php');
+        require_once('models/comment.php');
         break;
+
       case 'user':
         require_once('models/user.php');
         $controller= new UserController();
@@ -25,8 +28,8 @@
 
   // we're adding an entry for the new controller and its actions
   $controllers = array('pages' => ['home', 'error','otherPage','login', 'register', 'authDone'],
-                       'posts' => ['index', 'show'],
-                       'news' => ['home'],
+                       'posts' => ['index', 'show',],
+                       'news' => ['home', 'createNews','createComment'],
                        'user'=>['login','logout','register']);
 
   if (array_key_exists($controller, $controllers)) {
