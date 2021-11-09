@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 30, 2021 at 11:50 AM
+-- Generation Time: Nov 09, 2021 at 09:43 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.5
 
@@ -22,6 +22,34 @@ SET time_zone = "+00:00";
 --
 CREATE DATABASE IF NOT EXISTS `web2bead1` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `web2bead1`;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `comments`
+--
+
+CREATE TABLE `comments` (
+  `id` int(11) NOT NULL,
+  `date` timestamp NOT NULL DEFAULT current_timestamp(),
+  `author` varchar(50) NOT NULL,
+  `content` varchar(50) NOT NULL,
+  `to` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `comments`
+--
+
+INSERT INTO `comments` (`id`, `date`, `author`, `content`, `to`) VALUES
+(1, '2021-11-09 18:27:49', 'szerzo', 'content', 3),
+(2, '2021-11-09 18:28:27', 'szerzo1', 'content1', 1),
+(3, '2021-11-09 18:34:43', 'bela', 'wdwdwwd', 1),
+(4, '2021-11-09 18:37:50', 'bela', 'Halo', 1),
+(5, '2021-11-09 19:43:13', 'bela', 'Comment 4', 1),
+(6, '2021-11-09 19:50:02', 'bela', 'valami\r\n', 5),
+(7, '2021-11-09 20:01:01', 'bela', 'Károlyhoz kommentelek', 2),
+(8, '2021-11-09 20:41:44', 'bela', 'halószia', 7);
 
 -- --------------------------------------------------------
 
@@ -126,16 +154,23 @@ INSERT INTO `gep` (`id`, `hely`, `tipus`, `ipcim`) VALUES
 CREATE TABLE `posts` (
   `id` int(11) NOT NULL,
   `author` varchar(50) NOT NULL,
-  `content` varchar(2048) NOT NULL
+  `content` varchar(2048) NOT NULL,
+  `title` varchar(50) NOT NULL,
+  `date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `posts`
 --
 
-INSERT INTO `posts` (`id`, `author`, `content`) VALUES
-(1, 'Bela', 'Elmentem boltba'),
-(2, 'Károly', 'Visszajöttem a kocsmából');
+INSERT INTO `posts` (`id`, `author`, `content`, `title`, `date`) VALUES
+(1, 'Bela', 'Elmentem boltba', '', '2021-11-09 17:12:36'),
+(2, 'Károly', 'Visszajöttem a kocsmából', '', '2021-11-09 17:12:36'),
+(3, 'bela', 'dwdwdwdwdd', 'wdwd', '2021-11-09 17:28:07'),
+(4, 'bela', 'teszt szöveg', 'Teszt title', '2021-11-09 17:29:24'),
+(5, 'bela', 'Valami próba szöveg hír', 'Ez egy új hír', '2021-11-09 18:35:28'),
+(6, 'bela', 'Content', 'Title ', '2021-11-09 18:36:37'),
+(7, 'bela', 'Próba poszt', 'POst title', '2021-11-09 20:41:09');
 
 -- --------------------------------------------------------
 
@@ -2632,6 +2667,12 @@ INSERT INTO `users` (`id`, `username`, `password`, `role`, `first_name`, `last_n
 --
 
 --
+-- Indexes for table `comments`
+--
+ALTER TABLE `comments`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `gep`
 --
 ALTER TABLE `gep`
@@ -2666,6 +2707,12 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `comments`
+--
+ALTER TABLE `comments`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
 -- AUTO_INCREMENT for table `gep`
 --
 ALTER TABLE `gep`
@@ -2675,7 +2722,7 @@ ALTER TABLE `gep`
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `szoftver`
