@@ -28,8 +28,7 @@
             <th>Type</th>
             <th>IP</th>
         </tr>
-        <?php
-            
+        <?php         
             foreach($gepek as $gep){
                 echo "<tr><td>".$gep['id']."</td><td>".$gep['hely']."</td><td>".$gep["tipus"]."</td><td>".$gep["ipcim"]."</td></tr>";
             }

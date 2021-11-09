@@ -5,6 +5,7 @@
             
             $pdo_options[PDO::ATTR_ERRMODE] = PDO::ERRMODE_EXCEPTION;
             $db = new PDO('mysql:host=localhost;dbname=web2bead1', 'root', '', $pdo_options);
+            //$db = Db::getInstance();
             $sql = 'SELECT id, hely, tipus, ipcim FROM gep ORDER BY id';
             $req = $db->prepare($sql);
             $req->execute(array());

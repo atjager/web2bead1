@@ -77,20 +77,23 @@
 
                 // end($firstExchangeResult['Day']) NEED THE END() TO CUT THE ACTUAL VALUE(STRING)
 
+                if(empty($firstExchangeResult) || empty($secondExchangeResult)){
+                    $exchangeRate = "empty";
                 
-//-> null days     
-                $firstrate=(float)end($firstExchangeResult['Day'])/(float)end($checkfirstUnitResult['Units']);
-                $secondtrate=(float)end($secondExchangeResult['Day'])/(float)end($checksecondUnitResult['Units']);
-
-                $exchangeRate = $firstrate/$secondtrate;
-                
-                
+                }
+                else{
+                    $firstrate=(float)end($firstExchangeResult['Day'])/(float)end($checkfirstUnitResult['Units']);
+                    $secondtrate=(float)end($secondExchangeResult['Day'])/(float)end($checksecondUnitResult['Units']);
+                    $exchangeRate = $firstrate/$secondtrate;
+                }
+        
                 return $exchangeRate;
             }
 
             public function exchangeMonth($firstCurrency, $secondCurrency, $date){
                 $this->date = $date;
 
+                // Split the date and examines the month lenght.
                 $dateSplitter = explode("-", $date);
                 $monthDayCal = cal_days_in_month(CAL_GREGORIAN, $dateSplitter['1'], $dateSplitter['0']);
 
@@ -150,15 +153,24 @@
                     $checksecondUnitResult  = $e;
                 }
 
-                // end($firstExchangeResult['Day']) NEED THE END() TO CUT THE ACTUAL VALUE(STRING)
+                $dateArray = [];
+                $firstRate = [];
+                $secondRate = [];
+                $exchangeRate = [];
+                $passBack = [];
 
-                //$firstrate=(float)end($firstExchangeResult['Day'])/(float)end($checkfirstUnitResult['Units']);
-                //$secondtrate=(float)end($secondExchangeResult['Day'])/(float)end($checksecondUnitResult['Units']);
+                $arrLenght1 = count($firstExchangeResult['Day']);
+                // GET THE DATES AND THE VALUES
+                for( $i=0; $i<$arrLenght1; $i++ ){
+                    $dateArray[$i] = trim($firstExchangeResult['Day'][$i]['date']);
+                    $firstRate[$i] = (float)end($firstExchangeResult['Day'][$i])/(float)end($checkfirstUnitResult['Units']);
+                    $secondRate[$i] = (float)end($secondExchangeResult['Day'][$i])/(float)end($checkfirstUnitResult['Units']);
+                    $exchangeRate[$i] = $firstRate[$i]/$secondRate[$i];
 
-                //$exchangeRate = $firstrate/$secondtrate;
+                    $passBack[$i] = [$dateArray[$i] => $exchangeRate[$i]];
+                }
                 
-                $dates=[$startDate, $endDate];
-                return $firstExchangeResult;
+                return $passBack;
             }
 
         

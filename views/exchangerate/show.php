@@ -1,5 +1,5 @@
 
-<div class='box'>
+<div class='box' id='exfrom'>
     <form class="field" name=Currency method="POST" action="">
         <label class='label'>
             Choose the currencys you want to exchange:
@@ -44,7 +44,7 @@
         <input type='checkbox' id='month' name='month'>
         <br>
         <br>
-        <input class='button' type="submit" value="Submit" name=exchangesubmit>
+        <input class='button' type="submit" value="Submit"  id="exchangesubmit">
     </form>
 
 </div>
@@ -59,24 +59,88 @@
             $firstcurr = $_POST['firstcurr'];
             $secondcurr = $_POST['secondcurr'];
 
-            $data = $this->exchangeMonth($firstcurr, $secondcurr, $date);
-            var_dump($data);
+            $datas = $this->exchangeMonth($firstcurr, $secondcurr, $date);
+            //print_r($datas);
+            ?>
+
+            <table class="table" id="exchange" name="exchange">
+                <tr>
+                    <th>Currency</th>
+                    <th>Date</th>
+                    <th>Value</th>
+                </tr>
+                <?php
+                    foreach($datas as $data){
+                        foreach($data as $key =>$value)
+                            echo "<tr><td>".$_POST['firstcurr']." - ".$_POST['secondcurr']."</td><td>".$key."<td/><td>".$value."</td></tr>";
+                        
+                    }
+                ?>
+
+            </table>
+        <?php
         }
         else{
             $date = $_POST['date'];
             $firstcurr = $_POST['firstcurr'];
             $secondcurr = $_POST['secondcurr'];  
-            
-            
+
             $data = $this->exchange($firstcurr, $secondcurr, $date);
-            
+            if($data === 'empty'){
+                echo "<strong class='box'>No rate was recorded on this day!</strong>";
+            }
+            else{
             echo "<div class='box'>
                     <p>
                         In ".$_POST['date']." <strong>1</strong> ".$_POST['firstcurr']." was ".number_format($data, 9, '.')." ".$_POST['secondcurr']."
                     </p>
                 </div>";
+            }
         }        
     }else{
-        echo "Please give correct input!";
+        echo "<strong class='box'>Please give correct input!</strong>";
     }
 ?>
+<canvas id="myChart" width="400" height="400"></canvas>
+
+<script> 
+
+const ctx = document.getElementById('myChart');
+const myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        datasets: [{
+            label: '# of Votes',
+            data: [<?php implode(",",$datas['']) ?>],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+ 
+
+//scr="js/chart.js";
+</script>

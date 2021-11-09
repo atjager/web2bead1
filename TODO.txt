@@ -14,6 +14,6 @@ Bálint: SOAP, Doksi, Home page
 Atti: nethely, news
 
 !! SOAP ROOT:
-webservice.php (db connection, soap root)
-webserviceController.php
+/models/webservice.php (db connection, soap root)
+/controllers/webserviceController.php (soap root)
    

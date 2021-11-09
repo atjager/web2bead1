@@ -2,6 +2,7 @@
 <html>
   <head>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+  <script> src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.js"</script>
   </head>
   <body>
     <header>
