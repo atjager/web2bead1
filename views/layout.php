@@ -15,9 +15,6 @@
         News
       </a>
 
-      <a href='?controller=posts&action=index' class="navbar-item">
-        Posts
-      </a>
 
       <a href='?controller=pages&action=otherPage' class="navbar-item">
         OtherPage
@@ -68,7 +65,7 @@
     <?php require_once('routes.php'); ?>
 
     <footer>
-      Copyright
+      
     </footer>
   <body>
 <html>
