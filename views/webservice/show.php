@@ -2,6 +2,14 @@
 <div class='box'>
     <p> 
         Ezen az oldalon találhatók a Soap webszolgáltatáshoz szükséges információk. 
+    </p>
+    <br>
+        <p>
+        A következő soap link szükséges a használatához:
+        <br>
+        --------------url place holder-------------------
+    </p>
+    <p>
         <br>
        Jelenleg három lekérdezés elérhető, ezek a Soap szolgáltatás meghívása után használhatók.
     
@@ -13,6 +21,9 @@
         <li>&emsp;gettelepites()</li>
     </ul>
 
+    
+
+    <br>
     <p>
         A három metódus a különböző táblák teljes tartalmát vissza adják. Ezek láthatók lentebb.
     </p>

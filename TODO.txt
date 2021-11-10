@@ -16,4 +16,5 @@ Atti: nethely, news
 !! SOAP ROOT:
 /models/webservice.php (db connection, soap root)
 /controllers/webserviceController.php (soap root)
-   
+views/webservice/show.php 
+
