@@ -1,4 +1,4 @@
-
+<div class='container is-max-desktop'>
 <div class='box' id='exfrom'>
     <form class="field" name=Currency method="POST" action="">
         <label class='label'>
@@ -41,10 +41,12 @@
         <label class='label'>
             If you want to see the whole month check the box:
         </label>
-        <input type='checkbox' id='month' name='month'>
+        <input class='checkbox' type='checkbox' id='month' name='month'>
         <br>
         <br>
-        <input class='button' type="submit" value="Submit" id="exchangesubmit">
+        <div class= 'buttons'>
+            <input class="button is-primary" type="submit" value="Submit" id="exchangesubmit">
+        </div>
     </form>
 
 </div>
@@ -235,3 +237,5 @@ x: -30,
                 ]
         });
 </script>
+
+</div>

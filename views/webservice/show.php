@@ -1,3 +1,4 @@
+<div class='container is-max-desktop'>
 <div class='box'>
     <p> 
         Ezen az oldalon találhatók a Soap webszolgáltatáshoz szükséges információk. 
@@ -71,4 +72,5 @@
             }
         ?>
     </table>
+</div>
 </div>
