@@ -23,6 +23,9 @@ class UserController{
                     echo 'Incorrect username or password';
                 }
             }
+            else{
+                echo 'Incorrect username or password';
+            }
             
         }
     }
@@ -40,6 +43,9 @@ class UserController{
             if($registerUser==null){
                 $registerUser=User::insertUser($_POST['username'],$_POST['password'],2,$_POST['first_name'],$_POST['last_name']);
 
+            }
+            else{
+                echo 'Username already exists.';
             }
         }
     }
