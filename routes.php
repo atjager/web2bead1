@@ -36,7 +36,7 @@
   $controllers = array('pages' => ['home', 'error','login', 'register', 'authDone'],
 
                        'posts' => ['index', 'show'],
-                       'news' => ['home'],
+                       'news' => ['home', 'createComment', 'createNews'],
                        'user'=>['login','logout','register'],
                        'webservice' => ['show'],
                        'exchangerate' => ['show']

@@ -26,13 +26,13 @@
             
             return $result;
         }
-
+        
         public function gettelepites() {
             $result = array();
 
             $pdo_options[PDO::ATTR_ERRMODE] = PDO::ERRMODE_EXCEPTION;
             $db = new PDO('mysql:host=localhost;dbname=web2bead1', 'root', '', $pdo_options);
-            $sql = 'SELECT id, gepid, szoftverid, verzio, datum  FROM telepites ORDER BY id';
+            $sql = 'SELECT id, gepid, szoftverid, verzio, datum  FROM telepites ORDER BY id'; 
             $req = $db->prepare($sql);
             $req->execute(array());
             $result = $req->fetchAll(PDO::FETCH_ASSOC);
