@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 09, 2021 at 09:43 PM
+-- Generation Time: Nov 14, 2021 at 06:47 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.5
 
@@ -33,7 +33,7 @@ CREATE TABLE `comments` (
   `id` int(11) NOT NULL,
   `date` timestamp NOT NULL DEFAULT current_timestamp(),
   `author` varchar(50) NOT NULL,
-  `content` varchar(50) NOT NULL,
+  `content` varchar(255) NOT NULL,
   `to` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -42,14 +42,9 @@ CREATE TABLE `comments` (
 --
 
 INSERT INTO `comments` (`id`, `date`, `author`, `content`, `to`) VALUES
-(1, '2021-11-09 18:27:49', 'szerzo', 'content', 3),
-(2, '2021-11-09 18:28:27', 'szerzo1', 'content1', 1),
-(3, '2021-11-09 18:34:43', 'bela', 'wdwdwwd', 1),
-(4, '2021-11-09 18:37:50', 'bela', 'Halo', 1),
-(5, '2021-11-09 19:43:13', 'bela', 'Comment 4', 1),
-(6, '2021-11-09 19:50:02', 'bela', 'valami\r\n', 5),
-(7, '2021-11-09 20:01:01', 'bela', 'Károlyhoz kommentelek', 2),
-(8, '2021-11-09 20:41:44', 'bela', 'halószia', 7);
+(1, '2021-11-14 17:43:20', 'bela', 'This feature works properly, i love it.', 1),
+(2, '2021-11-14 17:44:03', 'kari', 'I really dont like it.', 1),
+(3, '2021-11-14 17:45:35', 'kari', 'LOL, if they dont want me to see the code, do it on server side, haha.', 2);
 
 -- --------------------------------------------------------
 
@@ -155,7 +150,7 @@ CREATE TABLE `posts` (
   `id` int(11) NOT NULL,
   `author` varchar(50) NOT NULL,
   `content` varchar(2048) NOT NULL,
-  `title` varchar(50) NOT NULL,
+  `title` varchar(100) NOT NULL,
   `date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -164,13 +159,8 @@ CREATE TABLE `posts` (
 --
 
 INSERT INTO `posts` (`id`, `author`, `content`, `title`, `date`) VALUES
-(1, 'Bela', 'Elmentem boltba', '', '2021-11-09 17:12:36'),
-(2, 'Károly', 'Visszajöttem a kocsmából', '', '2021-11-09 17:12:36'),
-(3, 'bela', 'dwdwdwdwdd', 'wdwd', '2021-11-09 17:28:07'),
-(4, 'bela', 'teszt szöveg', 'Teszt title', '2021-11-09 17:29:24'),
-(5, 'bela', 'Valami próba szöveg hír', 'Ez egy új hír', '2021-11-09 18:35:28'),
-(6, 'bela', 'Content', 'Title ', '2021-11-09 18:36:37'),
-(7, 'bela', 'Próba poszt', 'POst title', '2021-11-09 20:41:09');
+(1, 'jani', 'Microsoft has released a new preview build of Windows 11 that makes it even easier to share content from other apps to Microsoft Teams with attendees while in a meeting.\r\n<br><br>\r\nWith the release of Windows 11 Insider Preview Build 22499 to the software giants Dev Channel, Microsoft is rolling out a new feature that allows Teams users to quickly share content from open app windows directly from Windows 11s taskbar to their video calls.\r\n<br><br>\r\nThis new update builds on another recently released feature that introduced the ability to quickly mute and unmute active meeting calls right from the taskbar.\r\n<br><br>\r\nBy making it easier to share content during Teams calls, Microsoft will eliminate the need to switch back and forth between apps just to share or reshare a window. With less interruptions, meeting attendees will have a much easier time focusing on their meetings in Teams.', 'Microsoft Teams might finally be worth using in Windows 11', '2021-11-14 17:38:39'),
+(2, 'jani', 'IT administrators will soon have the power to block access to a web pages source code for some users of the worlds top browsers.\r\n<br><br>\r\nBoth Google Chrome and Microsoft Edge will be introducing the feature, which looks to fix a longstanding bug in the Chromium source code that could let users view restricted URLs.\r\n<br><br>\r\nHowever the change wontt affect all users, but instead mainly devices bought and owned by education enterprises such as schools, colleges and universities.', 'Some Chrome and Edge users will be blocked from seeing their browser source code', '2021-11-14 17:40:13');
 
 -- --------------------------------------------------------
 
@@ -2660,7 +2650,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `username`, `password`, `role`, `first_name`, `last_name`) VALUES
 (1, 'bela', '50eb453581f9126f30d21821445c2cd75d2b4165', 2, 'Béla', 'Próba'),
-(2, 'kari', '26cae1d9b999d72b8fafe6a0aa970902cee410b4', 2, 'Károly', 'Kiss');
+(2, 'kari', '26cae1d9b999d72b8fafe6a0aa970902cee410b4', 2, 'Károly', 'Kiss'),
+(3, 'jani', '646c3fad45809c2a958cce7b5df636ef8de93e7d', 2, 'jani', 'jani');
 
 --
 -- Indexes for dumped tables
@@ -2710,7 +2701,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `gep`
@@ -2722,7 +2713,7 @@ ALTER TABLE `gep`
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `szoftver`
@@ -2740,7 +2731,7 @@ ALTER TABLE `telepites`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
