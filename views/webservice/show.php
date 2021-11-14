@@ -7,7 +7,7 @@
         <p>
         A következő soap link szükséges a használatához:
         <br>
-        --------------url place holder-------------------
+        <strong>http://localhost/web2bead1/models/webservice.php</strong>
     </p>
     <p>
         <br>
